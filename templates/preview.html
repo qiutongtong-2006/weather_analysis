@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据预览</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background-color: #ffffff; /* 纯白色背景 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #eee;
+        }
+
+        .title {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .file-info {
+            color: #666;
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 16px;
+        }
+
+        .table-container {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            overflow-x: auto;
+            margin-bottom: 30px;
+            border: 1px solid #eee;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            white-space: nowrap;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+            color: #333;
+        }
+
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        .btn-back {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        .btn-next {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .btn-clean {
+            background-color: #ffc107;
+            color: #212529;
+        }
+
+        .btn-stats {
+            background-color: #17a2b8;
+            color: white;
+        }
+
+        .btn-visual {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .btn-cluster {
+            background-color: #343a40;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="title">📊 数据预览</h2>
+        <div class="file-info">
+            当前文件：{{ filename }}
+        </div>
+
+        <div class="table-container">
+            {{ table|safe }}
+        </div>
+
+        <div class="btn-group">
+            <a href="/" class="btn btn-back">⬅️ 重新上传</a>
+            <a href="#" class="btn btn-next" onclick="alert('正在导出原始数据给清洗人员使用')">💾 导出原始数据</a>
+            <a href="/clean/{{ filename }}" class="btn btn-clean">🧹 数据清洗</a>
+            <a href="/stats/{{ filename }}" class="btn btn-stats">📊 基础统计</a>
+            <a href="/visualize/{{ filename }}" class="btn btn-visual">📈 可视化绘图</a>
+            <a href="/cluster/{{ filename }}" class="btn btn-cluster">🔍 聚类分析</a>
+        </div>
+    </div>
+</body>
+</html>

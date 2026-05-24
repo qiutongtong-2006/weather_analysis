@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>交互式数据分析系统 - 导入</title>
+    <style>
+        /* 页面整体：加入背景图 */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+
+            /* 这里引入了一张背景*/
+            background-image: linear-gradient(rgba(244, 247, 246, 0.4), rgba(244, 247, 246, 0.4)),
+                  url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1920&q=80');
+
+            background-size: cover;        /* 让背景图铺满整个屏幕 */
+            background-position: center;   /* 背景图居中对齐 */
+            background-attachment: fixed;  /* 滚动页面时背景图固定不动 */
+
+            display: flex;                 /* 使用 flex 布局让白框上下左右完全居中 */
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;             /* 让视口高度至少占满全屏 */
+        }
+
+        /* 主容器：把白框扩大，并增加半透明磨砂玻璃质感 */
+        .container {
+                    width: 80%;
+                    max-width: 850px;
+                    background: rgba(255, 255, 255, 0.15); /* 半透明白色 */
+                    backdrop-filter: blur(10px); /* 磨砂玻璃效果 */
+                    -webkit-backdrop-filter: blur(10px);
+                    padding: 60px 40px;
+                    border-radius: 20px;
+                    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+                    border: 1px solid rgba(255, 255, 255, 0.2);
+                    text-align: center;
+                    position: relative;
+                    z-index: 2;
+        }
+
+        /* 欢迎语与主标题排版有序 */
+        h2 {
+            color: #1e293b;
+            font-size: 28px;               /* 放大标题字号 */
+            margin-bottom: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;           /* 字母间距 */
+        }
+
+        .subtitle {
+            color: #64748b;
+            font-size: 15px;
+            margin-bottom: 40px;
+        }
+
+        /* 美化文件选择区域 */
+        .file-upload-wrapper {
+            margin: 30px 0;
+            padding: 40px 20px;            /* 增高上下间距，让拖拽/点击区域更大 */
+            border: 2px dashed #cbd5e1;
+            border-radius: 12px;
+            background-color: #f8fafc;
+            transition: all 0.3s;
+        }
+
+        .file-upload-wrapper:hover {
+            border-color: #3498db;
+            background-color: #f0f7fc;
+        }
+
+        input[type="file"] {
+            font-size: 15px;
+            color: #64748b;
+            cursor: pointer;
+            margin: 0 auto;
+        }
+
+        /* 统一的现代感按钮样式 */
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 14px 30px;            /* 加大按钮，更方便点击 */
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+            transition: all 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);   /* 鼠标悬停时往上浮动 2 像素 */
+            box-shadow: 0 8px 16px rgba(52, 152, 219, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>交互式数据分析系统</h2>
+        <div class="subtitle">欢迎使用本系统！请在下方导入您需要分析的数据集</div>
+
+        <form method="POST" enctype="multipart/form-data">
+            <div class="file-upload-wrapper">
+                <input type="file" name="file" accept=".csv, .xlsx, .xls" required>
+            </div>
+            <button type="submit">🚀 开始上传并预览数据</button>
+        </form>
+    </div>
+</body>
+</html>
